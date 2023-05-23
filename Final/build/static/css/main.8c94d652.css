@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    background-color: darkgray;
+}
+
+code {
+    font-family: 'Press Start 2P', cursive;
+}
+
+.App {
+    text-align: center;
+}
+
+.grid {
+    background-color: black;
+    border: 2px solid #333;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    height: 600px;
+    margin: 5% auto;
+    width: 600px;
+}
+
+.cell {
+    border: 1px solid rgba(276, 276, 276, 0.2);
+}
+
+.snake {
+    background-color: green;
+}
+
+.food {
+    background-color: red;
+}
+
+.game-over {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 16px;
+}
+
+/*# sourceMappingURL=main.8c94d652.css.map*/
