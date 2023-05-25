@@ -55,8 +55,8 @@ function drawPellets() {
 // Create a function to add a random ghost to the canvas
 function addRandomGhost() {
     const newGhost = {
-        x: getRandomNumber(0, canvas.width),
-        y: getRandomNumber(0, canvas.height),
+        x: getRandomNumber(10, canvas.width),
+        y: getRandomNumber(10, canvas.height),
         radius: 15,
         color: "red",
         direction: getRandomDirection(["right", "up", "down", "left"]),
@@ -122,25 +122,26 @@ function updateGhosts() {
         } else if (ghost.direction === "down") {
             ghost.y += ghost.speed;
         }
-
         // Check if the ghost has gone off the canvas
-        if (ghost.x > canvas.width + ghost.radius) {
+        if (ghost.x > canvas.width + ghost.radius + 1) {
             // Place the ghost on the left edge with a new direction
-            ghost.x = canvas.width - ghost.radius;  // Adjust the placement to avoid overlapping with the wall
-            ghost.direction = getRandomDirection(["right", "up", "down"]);
+            ghost.x = -ghost.radius;
+            ghost.direction = "right";
         } else if (ghost.x < -ghost.radius) {
             // Place the ghost on the right edge with a new direction
-            ghost.x = ghost.radius;  // Adjust the placement to avoid overlapping with the wall
-            ghost.direction = getRandomDirection(["left", "up", "down"]);
-        } else if (ghost.y > canvas.height + ghost.radius) {
+            ghost.x = canvas.width + ghost.radius;
+            ghost.direction = "left";
+        } else if (ghost.y > canvas.height + ghost.radius + 1) {
             // Place the ghost on the top edge with a new direction
-            ghost.y = canvas.height - ghost.radius;  // Adjust the placement to avoid overlapping with the wall
-            ghost.direction = getRandomDirection(["right", "left", "up"]);
+            ghost.y = -ghost.radius;
+            ghost.direction = "down";
         } else if (ghost.y < -ghost.radius) {
             // Place the ghost on the bottom edge with a new direction
-            ghost.y = ghost.radius;  // Adjust the placement to avoid overlapping with the wall
-            ghost.direction = getRandomDirection(["right", "left", "down"]);
+            ghost.y = canvas.height + ghost.radius;
+            ghost.direction = "up";
         }
+
+
 
 
         // Check if the ghost has collided with Pac-Man
@@ -190,31 +191,6 @@ function isGhostCollision(pacman, ghost) {
         return false; // No collision
     }
 }
-
-
-/* function updateGhosts() {
-    ghosts.forEach((ghost) => {
-        // Move the ghost in its current direction
-        switch (ghost.direction) {
-            case "right":
-                ghost.x += ghost.speed;
-                break;
-            case "left":
-                ghost.x -= ghost.speed;
-                break;
-            case "up":
-                ghost.y -= ghost.speed;
-                break;
-            case "down":
-                ghost.y += ghost.speed;
-                break;
-        } */
-
-/*  */
-
-
-/*     });
-} */
 
 // Function to get a random direction from an array of directions
 function getRandomDirection(directions) {
@@ -410,8 +386,8 @@ let currentLevel = 1; // Variable to keep track of the current level
 
 function restartGame() {
     // Reset Pac-Man's position and direction
-    pacman.x = 300;
-    pacman.y = 300;
+    pacman.x = 0;
+    pacman.y = 0;
     pacman.direction = "right";
 
     // Clear the pellets array
