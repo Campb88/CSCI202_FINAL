@@ -1,5 +1,5 @@
 function startSnakeGame() {
-    window.location.href = '../Final/build/index.html'; // Replace with the path to the Snake Game HTML file
+    window.location.href = '../Final/snake-game/build/index.html'; // Replace with the path to the Snake Game HTML file
 }
 
 function startPacManGame() {
